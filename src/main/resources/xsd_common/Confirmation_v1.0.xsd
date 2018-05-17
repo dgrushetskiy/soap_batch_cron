@@ -1,0 +1,30 @@
+﻿<xsd:schema attributeFormDefault="unqualified"
+            elementFormDefault="qualified"
+            targetNamespace="http://bus.ugd.mos.ru/Confirmation"
+            xmlns:tns="http://bus.ugd.mos.ru/Confirmation"
+            xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+   <xsd:element name="systemEventNotification" type="tns:systemEventNotification">
+      <xsd:annotation>
+         <xsd:documentation>Уведомление о системном событии</xsd:documentation>
+      </xsd:annotation>
+   </xsd:element>
+   <xsd:complexType name="systemEventNotification">
+      <xsd:sequence>
+         <xsd:element name="requestID" type="xsd:string">
+            <xsd:annotation>
+               <xsd:documentation>Идентификатор запроса</xsd:documentation>
+            </xsd:annotation>
+         </xsd:element>
+         <xsd:element name="resultCode" type="xsd:string">
+            <xsd:annotation>
+               <xsd:documentation>Код результата взаимодействия</xsd:documentation>
+            </xsd:annotation>
+         </xsd:element>
+         <xsd:element name="resultDescription" type="xsd:string">
+            <xsd:annotation>
+               <xsd:documentation>Описание результата</xsd:documentation>
+            </xsd:annotation>
+         </xsd:element>
+      </xsd:sequence>
+   </xsd:complexType>
+</xsd:schema>

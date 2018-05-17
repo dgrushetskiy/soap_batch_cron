@@ -1,0 +1,34 @@
+﻿<xsd:schema attributeFormDefault="unqualified"
+            elementFormDefault="qualified"
+            targetNamespace="http://bus.ugd.mos.ru/U_007_340_IN"
+            xmlns:inc="http://bus.ugd.mos.ru/U_007_340_341"
+            xmlns:tns="http://bus.ugd.mos.ru/U_007_340_IN"
+            xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+
+   <xsd:import  namespace="http://bus.ugd.mos.ru/U_007_340_341" schemaLocation="/xsd/U_007_340_341.xsd"/><!--namespace="http://bus.ugd.mos.ru/001/U_001_001_001/v1.0"-->
+   <xsd:element name="infoWrapperIn" type="tns:infoWrapperIn"/>
+   <xsd:complexType name="infoWrapperIn">
+      <xsd:sequence>
+          <xsd:element name="updateType" type="xsd:long" minOccurs="0" maxOccurs="1">
+              <xsd:annotation>
+                  <xsd:documentation>Идентификатор обновления данных</xsd:documentation>
+              </xsd:annotation>
+          </xsd:element>
+          <xsd:element name="documentDate" type="xsd:date" minOccurs="0" maxOccurs="1">
+              <xsd:annotation>
+                  <xsd:documentation>Дата обновления</xsd:documentation>
+              </xsd:annotation>
+          </xsd:element>
+          <xsd:element default="0" name="delete" type="xsd:int">
+              <xsd:annotation>
+                  <xsd:documentation>Признак удаления (если значение равно 1 данные подлежат удалению)</xsd:documentation>
+              </xsd:annotation>
+          </xsd:element>
+          <xsd:element minOccurs="1" name="update" type="inc:updateType">
+              <xsd:annotation>
+                  <xsd:documentation>Обновления</xsd:documentation>
+              </xsd:annotation>
+          </xsd:element>
+      </xsd:sequence>
+   </xsd:complexType>
+</xsd:schema>

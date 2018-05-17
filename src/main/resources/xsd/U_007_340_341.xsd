@@ -1,0 +1,168 @@
+﻿<xs:schema targetNamespace="http://bus.ugd.mos.ru/U_007_340_341"
+           elementFormDefault="qualified"
+           attributeFormDefault="unqualified"
+           xmlns:xs="http://www.w3.org/2001/XMLSchema"
+           xmlns:tns="http://bus.ugd.mos.ru/U_007_340_341">
+    <xs:element name="update" type="tns:updateType"/>
+
+    <xs:complexType name="updateType">
+        <xs:sequence>
+            <xs:element type="tns:regionType" name="region" maxOccurs="unbounded" minOccurs="0"/>
+            <xs:element type="tns:kvartalType" name="kvartal" maxOccurs="unbounded" minOccurs="0"/>
+            <xs:element type="tns:snos_buildingsType" name="snos_buildings"/>
+            <xs:element name="starts_tep">
+                <xs:complexType mixed="true">
+                    <xs:sequence>
+                        <xs:element type="tns:start_tepType" name="start_tep" maxOccurs="unbounded" minOccurs="0"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+        </xs:sequence>
+        <xs:attribute type="xs:string" name="update_date" />
+        <xs:attribute type="xs:long" name="update_sequence" />
+    </xs:complexType>   
+    <xs:complexType name="regionType">
+        <xs:attribute type="xs:boolean" name="deleted" use="optional"/>
+        <xs:attribute type="xs:string" name="name" use="optional"/>       
+        <xs:attribute type="xs:short" name="region_code" use="optional"/>       
+        <xs:attribute type="xs:short" name="short" use="optional"/>       
+    </xs:complexType>   
+    <xs:complexType name="kvartalType">
+        <xs:attribute type="xs:boolean" name="deleted" use="optional"/>
+        <xs:attribute type="xs:short" name="region_code" use="optional"/>       
+        <xs:attribute type="xs:string" name="geoloc" use="optional"/>        
+        <xs:attribute type="xs:short" name="npc_code" use="optional"/>        
+        <xs:attribute type="xs:string" name="project_name" use="optional"/>       
+    </xs:complexType>
+
+    <xs:complexType name="snos_buildingsType" mixed="true">
+        <xs:sequence>
+            <xs:element type="tns:snos_buildingType" name="snos_building" maxOccurs="unbounded" minOccurs="0"/>
+        </xs:sequence>
+    </xs:complexType>   
+    <xs:complexType name="snos_buildingType">
+        <xs:sequence>
+            <xs:element type="tns:snos_flatsType" name="snos_flats"/>
+        </xs:sequence>
+        <xs:attribute type="xs:boolean" name="deleted" use="optional"/>
+        <xs:attribute type="xs:int" name="unom" use="optional"/>      
+        <xs:attribute type="xs:short" name="kvartal_code" use="optional"/>       
+        <xs:attribute type="xs:string" name="address" use="optional"/>       
+        <xs:attribute type="xs:string" name="floor_max" use="optional"/>       
+        <xs:attribute type="xs:string" name="geoloc" use="optional"/>       
+        <xs:attribute type="xs:string" name="god_p_dgp" use="optional"/>       
+        <xs:attribute type="xs:float" name="hab_square" use="optional"/>       
+        <xs:attribute type="xs:byte" name="is_disabled" use="optional"/>        
+        <xs:attribute type="xs:byte" name="is_unhab" use="optional"/>       
+        <xs:attribute type="xs:string" name="mat_sten" use="optional"/>        
+        <xs:attribute type="xs:string" name="monument" use="optional"/>       
+        <xs:attribute type="xs:int" name="npc_cod" use="optional"/>        
+        <xs:attribute type="xs:byte" name="proc_izn" use="optional"/>       
+        <xs:attribute type="xs:string" name="sost_dgp" use="optional"/>        
+    </xs:complexType>
+
+    <xs:complexType name="snos_flatsType" mixed="true">
+        <xs:sequence>
+            <xs:element type="tns:snos_flatType" name="snos_flat" maxOccurs="unbounded" minOccurs="0"/>
+        </xs:sequence>
+    </xs:complexType>
+
+  
+    <xs:complexType name="snos_flatType">
+        <xs:simpleContent>
+            <xs:extension base="xs:string">
+                <xs:attribute type="xs:short"  name="unkv" use="optional"/>              
+                <xs:attribute type="xs:string" name="kvnom" use="optional"/>               
+                <xs:attribute type="xs:byte"   name="kmq" use="optional"/>               
+                <xs:attribute type="xs:string" name="ppl" use="optional"/>                
+                <xs:attribute type="xs:float"  name="opl" use="optional"/>                
+                <xs:attribute type="xs:float"  name="gpl" use="optional"/>               
+            </xs:extension>
+        </xs:simpleContent>
+    </xs:complexType>
+
+    <xs:complexType name="starts_tepType">
+        <xs:sequence>
+            <xs:element type="tns:start_tepType" name="start_tep" maxOccurs="unbounded" minOccurs="0"/>
+        </xs:sequence>
+    </xs:complexType>   
+    <xs:complexType name="start_tepType">
+        <xs:sequence>
+            <xs:element name="buildobjects">
+                <xs:complexType mixed="true">
+                    <xs:sequence>
+                        <xs:element type="tns:buildobjectType" name="buildobject" maxOccurs="unbounded" minOccurs="0"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+        </xs:sequence>
+        <xs:attribute type="xs:boolean" name="deleted" use="optional"/>
+        <xs:attribute type="xs:short" name="kvartal_code" use="optional"/>       
+        <xs:attribute type="xs:byte" name="categorija" use="optional"/>      
+        <xs:attribute type="xs:string" name="geoloc" use="optional"/>       
+        <xs:attribute type="xs:string" name="hab_date" use="optional"/>       
+        <xs:attribute type="xs:short" name="id" use="optional"/>        
+        <xs:attribute type="xs:byte" name="is_actual" use="optional"/>        
+        <xs:attribute type="xs:byte" name="is_invest" use="optional"/>        
+        <xs:attribute type="xs:string" name="name_invest" use="optional"/>        
+        <xs:attribute type="xs:string" name="object_name" use="optional"/>        
+        <xs:attribute type="xs:string" name="plan_year" use="optional"/>        
+        <xs:attribute type="xs:string" name="s_zhilaya" use="optional"/>        
+        <xs:attribute type="xs:string" name="start_date" use="optional"/>       
+    </xs:complexType>
+
+    <xs:complexType name="buildobjectsType">
+        <xs:sequence>
+            <xs:element type="tns:buildobjectType" name="buildobject" maxOccurs="unbounded" minOccurs="0"/>
+        </xs:sequence>
+    </xs:complexType>
+   
+    <xs:complexType name="buildobjectType">
+        <xs:sequence>
+            <xs:element name="start_domas">
+                <xs:complexType mixed="true">
+                    <xs:sequence>
+                        <xs:element type="tns:start_domType" name="start_dom" maxOccurs="unbounded" minOccurs="0"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+        </xs:sequence>
+        <xs:attribute type="xs:string" name="bld_address" use="optional"/>       
+        <xs:attribute type="xs:string" name="buildobject_id" use="optional"/>      
+        <xs:attribute type="xs:string" name="geoloc" use="optional"/>       
+        <xs:attribute type="xs:string" name="post_address" use="optional"/>        
+        <xs:attribute type="xs:float" name="s_zhilaya" use="optional"/>        
+    </xs:complexType>
+
+    <xs:complexType name="start_domasType">
+        <xs:sequence>
+            <xs:element type="tns:start_domType" name="start_dom" maxOccurs="unbounded" minOccurs="0"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="start_domType">
+        <xs:sequence>
+            <xs:element type="tns:start_kvartsType" name="start_kvarts"/>
+        </xs:sequence>
+        <xs:attribute type="xs:int" name="npp" use="optional"/>       
+    </xs:complexType>
+
+    <xs:complexType name="start_kvartsType">
+        <xs:sequence>
+            <xs:element type="tns:start_kvartType" name="start_kvart" maxOccurs="unbounded" minOccurs="0"/>
+        </xs:sequence>
+    </xs:complexType>
+   
+    <xs:complexType name="start_kvartType">
+        <xs:simpleContent>
+            <xs:extension base="xs:string">
+                <xs:attribute type="xs:string" name="tip" use="optional"/>               
+                <xs:attribute type="xs:short" name="lvl" use="optional"/>               
+                <xs:attribute type="xs:byte" name="kmq" use="optional"/>               
+                <xs:attribute type="xs:float" name="ppl" use="optional"/>               
+                <xs:attribute type="xs:float" name="opl" use="optional"/>               
+                <xs:attribute type="xs:float" name="gpl" use="optional"/>               
+            </xs:extension>
+        </xs:simpleContent>
+    </xs:complexType>
+</xs:schema>

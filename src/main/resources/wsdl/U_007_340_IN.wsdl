@@ -1,0 +1,50 @@
+﻿<wsdl:definitions targetNamespace="http://bus.ugd.mos.ru/U_007_340_IN"
+                  xmlns:http="http://schemas.xmlsoap.org/wsdl/http/"
+                  xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/"
+                  xmlns:tns="http://bus.ugd.mos.ru/U_007_340_IN"
+                  xmlns:tns2="http://bus.ugd.mos.ru/Confirmation"
+                  xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+    <wsdl:documentation>
+        <wsdl:appinfo source="WMQI_APPINFO">
+            <MRWSDLAppInfo imported="true">
+                <binding hasEncoding="false" imported="true" name="U_007_340_IN" originalBindingStyle="document"/>
+            </MRWSDLAppInfo>
+        </wsdl:appinfo>
+    </wsdl:documentation>
+    <wsdl:types>
+        <xsd:schema attributeFormDefault="unqualified" elementFormDefault="qualified" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema">
+            <xsd:import  namespace="http://bus.ugd.mos.ru/U_007_340_IN" schemaLocation="../xsd/U_007_340_IN.xsd"/> <!--namespace="http://bus.ugd.mos.ru/001/U_001_001_IN/v1.0"-->
+            <xsd:import  namespace="http://bus.ugd.mos.ru/Confirmation" schemaLocation="../xsd_common/Confirmation_v1.0.xsd"/> <!-- namespace="http://bus.ugd.mos.ru/000/Confirmation/v1.0"-->
+        </xsd:schema>
+    </wsdl:types>
+    <wsdl:message name="U_007_340_IN">
+        <wsdl:part element="tns:infoWrapperIn" name="U_007_340_IN"/>
+    </wsdl:message>
+    <wsdl:message name="systemEventNotification">
+        <wsdl:part element="tns2:systemEventNotification" name="systemEventNotification"/>
+    </wsdl:message>
+    <wsdl:portType name="U_007_340_IN">
+        <wsdl:operation name="sendData">
+            <wsdl:documentation>публикация пакета обновлений</wsdl:documentation>
+            <wsdl:input message="tns:U_007_340_IN"/>
+            <wsdl:output message="tns:systemEventNotification"/>
+        </wsdl:operation>
+    </wsdl:portType>
+    <wsdl:binding name="U_007_340_IN" type="tns:U_007_340_IN">
+        <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+        <wsdl:operation name="sendData">
+            <soap:operation soapAction="urn:sendData"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+    </wsdl:binding>
+    <wsdl:service name="U_007_340_IN">
+        <wsdl:port binding="tns:U_007_340_IN" name="U_007_340_IN">
+            <soap:address location="http://bus.ugd.mos.ru/services/U_007_340_IN"/>
+        </wsdl:port>
+    </wsdl:service>
+</wsdl:definitions>
